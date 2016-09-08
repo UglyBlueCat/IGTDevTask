@@ -75,9 +75,9 @@ class DataHandler {
     /*
      * extractDataPoints
      * 
-     * 
+     * extracts game objects from an array of game data and stores them as JackpotGame objects in an array
      *
-     * @param: dataPoints: NSArray
+     * @param: dataPoints: NSArray - the array of game data
      */
     func extractDataPoints (dataPoints: NSArray) {
         for point: AnyObject in dataPoints {
@@ -85,8 +85,8 @@ class DataHandler {
                let jackpot = point["jackpot"] as? Int,
                let date = point["date"] as? String {
                 
-                let game : JackpotGame = JackpotGame(name: name, jackpot: jackpot, date: date)
-                games.append(game)
+                   let game : JackpotGame = JackpotGame(name: name, jackpot: jackpot, date: date)
+                   games.append(game)
             } else {
                 DLog("Cannot extract data for point: \(point)")
             }

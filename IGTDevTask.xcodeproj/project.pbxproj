@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00362F2E1D816515000C080D /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00362F2D1D816515000C080D /* Globals.swift */; };
 		00AF1B111D802C1E00ACB2C2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AF1B101D802C1E00ACB2C2 /* NetworkManager.swift */; };
 		00D184031D7EE0E800B46C1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D184021D7EE0E800B46C1F /* AppDelegate.swift */; };
 		00D184051D7EE0E800B46C1F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D184041D7EE0E800B46C1F /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00362F2D1D816515000C080D /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		00AF1B101D802C1E00ACB2C2 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		00D183FF1D7EE0E700B46C1F /* IGTDevTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IGTDevTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00D184021D7EE0E800B46C1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				00D1840B1D7EE0E800B46C1F /* LaunchScreen.storyboard */,
 				00D1840E1D7EE0E800B46C1F /* Info.plist */,
 				00AF1B101D802C1E00ACB2C2 /* NetworkManager.swift */,
+				00362F2D1D816515000C080D /* Globals.swift */,
 			);
 			path = IGTDevTask;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00362F2E1D816515000C080D /* Globals.swift in Sources */,
 				00AF1B111D802C1E00ACB2C2 /* NetworkManager.swift in Sources */,
 				00D184051D7EE0E800B46C1F /* ViewController.swift in Sources */,
 				00D184031D7EE0E800B46C1F /* AppDelegate.swift in Sources */,

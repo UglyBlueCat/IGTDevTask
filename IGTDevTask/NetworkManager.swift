@@ -30,8 +30,6 @@ class NetworkManager {
             return
         }
         
-        DLog("jackpotURL: \(jackpotURL.debugDescription)")
-        
         let jackPotURLRequest : NSURLRequest = NSURLRequest(URL: jackpotURL) 
         
         downloadData(jackPotURLRequest)
@@ -51,7 +49,11 @@ class NetworkManager {
                 return
             }
             
-            DLog("data: \(data.debugDescription)")
+            if data != nil {
+                DataHandler.sharedInstance.parseJackpotData(data!)
+            } else {
+                DLog("Null data")
+            }
         })
     }
     

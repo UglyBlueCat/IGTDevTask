@@ -11,6 +11,7 @@ import UIKit
 
 let jackpotURLString: String = "https://dl.dropboxusercontent.com/u/49130683/nativeapp-test.json"
 let userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+let kCurrency: String = "kCurrency"
 
 /*
  * Colours

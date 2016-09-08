@@ -17,8 +17,76 @@ class DataHandler {
     static let sharedInstance = DataHandler()
     private init() {}
     
-    func parseJackpotData (data: NSData) {
+    /*
+     * handleJackpotData
+     * 
+     * Handle data retrieved from the jackpot data URL
+     *
+     * @param: data: NSData - the retrieved data
+     */
+    func handleJackpotData (data: NSData) {
         
-        DLog("data: \(data.debugDescription)")
+        do {
+            let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves)
+            parseJackpotData(jsonData)
+        } catch {
+            DLog("JSON conversion error: \(error)")
+        }
+    }
+    
+    /*
+     * parseJackpotData
+     * 
+     * Parse jackpot data converted from JSON to an unknown data type 
+     *
+     * @param: jsonData: AnyObject - the converted data
+     */
+    func parseJackpotData (jsonData: AnyObject) {
+        
+        if let response = jsonData["response"] as? String {
+            guard response == "success" else {
+                DLog("Download response failure (!= \"success\")")
+                return
+            }
+        } else {
+            DLog("Cannot extract response string from data")
+            return
+        }
+        
+        if let currency = jsonData["currency"] as? String {
+            userDefaults.setObject(currency, forKey: kCurrency)
+        } else {
+            DLog("Cannot extract currency string from data")
+            return
+        }
+        
+        if let data = jsonData["data"] as? NSArray {
+            extractDataPoints(data)
+        } else {
+            DLog("Cannot extract game data array from data")
+            return
+        }
+    }
+    
+    /*
+     * extractDataPoints
+     * 
+     * 
+     *
+     * @param: dataPoints: NSArray
+     */
+    func extractDataPoints (dataPoints: NSArray) {
+        for point: AnyObject in dataPoints {
+            if let name = point["name"] as? String,
+               let jackpot = point["jackpot"] as? Int,
+               let date = point["date"] as? String {
+                
+                DLog("name: \(name)")
+                DLog("jackpot: \(jackpot)")
+                DLog("date: \(date)")
+            } else {
+                DLog("Cannot extract data for point: \(point)")
+            }
+        }
     }
 }

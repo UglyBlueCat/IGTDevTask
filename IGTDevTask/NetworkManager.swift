@@ -25,6 +25,7 @@ class NetworkManager {
      * Downloads a list of games and their jackpots 
      */
     func fetchJackpotList () {
+        
         guard let jackpotURL : NSURL = NSURL(string: jackpotURLString) else {
             DLog("Cannot initialise jackpot URL: \(jackpotURLString)")
             return
@@ -48,6 +49,7 @@ class NetworkManager {
      * @param: request: NSURLRequest - The URL request to download data from
      */
     func downloadData (request: NSURLRequest) {
+        
         handleRequest(request, completion: { (data, urlResponse, error) in
             guard error == nil else {
                 DLog("Download error: \(error!.description)")
@@ -55,7 +57,7 @@ class NetworkManager {
             }
             
             if data != nil {
-                DataHandler.sharedInstance.parseJackpotData(data!)
+                DataHandler.sharedInstance.handleJackpotData(data!)
             } else {
                 DLog("Null data")
             }
@@ -75,6 +77,7 @@ class NetworkManager {
      *         - A method to handle the returned data
      */
     func handleRequest (request: NSURLRequest, completion: (NSData?, NSURLResponse?, NSError?) -> Void) {
+        
         let task : NSURLSessionDataTask = defaultSession.dataTaskWithRequest(request, completionHandler: completion) 
         task.resume()
     }

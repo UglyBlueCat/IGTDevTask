@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		00362F2E1D816515000C080D /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00362F2D1D816515000C080D /* Globals.swift */; };
 		00362F301D818CCA000C080D /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00362F2F1D818CCA000C080D /* DataHandler.swift */; };
+		00362F361D81A339000C080D /* JackpotGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00362F351D81A339000C080D /* JackpotGame.swift */; };
 		00AF1B111D802C1E00ACB2C2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AF1B101D802C1E00ACB2C2 /* NetworkManager.swift */; };
 		00D184031D7EE0E800B46C1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D184021D7EE0E800B46C1F /* AppDelegate.swift */; };
 		00D184051D7EE0E800B46C1F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D184041D7EE0E800B46C1F /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		00362F2D1D816515000C080D /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		00362F2F1D818CCA000C080D /* DataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
+		00362F351D81A339000C080D /* JackpotGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JackpotGame.swift; sourceTree = "<group>"; };
 		00AF1B101D802C1E00ACB2C2 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		00D183FF1D7EE0E700B46C1F /* IGTDevTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IGTDevTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00D184021D7EE0E800B46C1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,14 @@
 			name = Resource;
 			sourceTree = "<group>";
 		};
+		00362F341D81A2FE000C080D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				00362F351D81A339000C080D /* JackpotGame.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		00D183F61D7EE0E700B46C1F = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +100,7 @@
 		00D184011D7EE0E800B46C1F /* IGTDevTask */ = {
 			isa = PBXGroup;
 			children = (
+				00362F341D81A2FE000C080D /* Data */,
 				00362F321D818CF4000C080D /* Core */,
 				00362F311D818CD4000C080D /* View Controllers */,
 				00362F331D818D1A000C080D /* Resource */,
@@ -170,6 +181,7 @@
 			files = (
 				00362F2E1D816515000C080D /* Globals.swift in Sources */,
 				00AF1B111D802C1E00ACB2C2 /* NetworkManager.swift in Sources */,
+				00362F361D81A339000C080D /* JackpotGame.swift in Sources */,
 				00D184051D7EE0E800B46C1F /* ViewController.swift in Sources */,
 				00D184031D7EE0E800B46C1F /* AppDelegate.swift in Sources */,
 				00362F301D818CCA000C080D /* DataHandler.swift in Sources */,

@@ -10,12 +10,16 @@ import Foundation
 
 class DataHandler {
     
+    var games : Array <JackpotGame>
+    
     /*
      * Create a shared instance to initialise class as a singleton
      * originally taken from: http://krakendev.io/blog/the-right-way-to-write-a-singleton
      */
     static let sharedInstance = DataHandler()
-    private init() {}
+    private init() {
+        games = Array()
+    }
     
     /*
      * handleJackpotData
@@ -81,9 +85,8 @@ class DataHandler {
                let jackpot = point["jackpot"] as? Int,
                let date = point["date"] as? String {
                 
-                DLog("name: \(name)")
-                DLog("jackpot: \(jackpot)")
-                DLog("date: \(date)")
+                let game : JackpotGame = JackpotGame(name: name, jackpot: jackpot, date: date)
+                games.append(game)
             } else {
                 DLog("Cannot extract data for point: \(point)")
             }

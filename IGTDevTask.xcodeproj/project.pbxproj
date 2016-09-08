@@ -17,6 +17,7 @@
 		00D184081D7EE0E800B46C1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D184061D7EE0E800B46C1F /* Main.storyboard */; };
 		00D1840A1D7EE0E800B46C1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00D184091D7EE0E800B46C1F /* Assets.xcassets */; };
 		00D1840D1D7EE0E800B46C1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D1840B1D7EE0E800B46C1F /* LaunchScreen.storyboard */; };
+		00F238221D81E88E00D17AB5 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F238211D81E88E00D17AB5 /* GameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		00D184091D7EE0E800B46C1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		00D1840C1D7EE0E800B46C1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		00D1840E1D7EE0E800B46C1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00F238211D81E88E00D17AB5 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				00D184041D7EE0E800B46C1F /* ViewController.swift */,
+				00F238211D81E88E00D17AB5 /* GameViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				007456C71D81B9F90028CF59 /* FileHandler.swift in Sources */,
 				00AF1B111D802C1E00ACB2C2 /* NetworkManager.swift in Sources */,
 				00362F361D81A339000C080D /* JackpotGame.swift in Sources */,
+				00F238221D81E88E00D17AB5 /* GameViewController.swift in Sources */,
 				00D184051D7EE0E800B46C1F /* ViewController.swift in Sources */,
 				00D184031D7EE0E800B46C1F /* AppDelegate.swift in Sources */,
 				00362F301D818CCA000C080D /* DataHandler.swift in Sources */,

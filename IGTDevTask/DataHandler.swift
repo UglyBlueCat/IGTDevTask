@@ -91,5 +91,10 @@ class DataHandler {
                 DLog("Cannot extract data for point: \(point)")
             }
         }
+        if dataPoints.count > 0 {
+            NSNotificationCenter.defaultCenter().postNotificationName(kNewData, object: nil)
+        } else {
+            FileHandler.sharedInstance.readDataFromFile()
+        }
     }
 }

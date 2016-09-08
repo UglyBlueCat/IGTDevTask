@@ -40,6 +40,11 @@ class NetworkManager {
      *
      * Downloads data from a given URL request
      *
+     * It would make more sense for the completion method to be passed to this method as it calls a method in the
+     * data handler which is specific to parsing jackpot data, but that would leave this method empty.
+     * I want this method to show the distinction of having a method specifically for download requests
+     * There could be other methods for other types of requests; we just don't need them in this case
+     *
      * @param: request: NSURLRequest - The URL request to download data from
      */
     func downloadData (request: NSURLRequest) {

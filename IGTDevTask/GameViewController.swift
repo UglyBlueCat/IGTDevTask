@@ -20,15 +20,30 @@ class GameViewController: UIViewController {
         positionObjectsWithinSize(size)
     }
     
+    /*
+     * setupView()
+     *
+     * Set up the view
+     */
     func setupView () {
         addObjects()
         positionObjectsWithinSize(view.bounds.size)
     }
     
+    /*
+     * addObjects()
+     *
+     * Add objects to the view
+     */
     func addObjects () {
         
     }
     
+    /*
+     * positionObjectsWithinSize
+     *
+     * Sets the size of objects separately so this function can be called from different places
+     */
     func positionObjectsWithinSize (size: CGSize) {
         
     }

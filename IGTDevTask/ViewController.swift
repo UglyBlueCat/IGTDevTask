@@ -64,8 +64,6 @@ class ViewController: UIViewController {
      * Done in a seperate method so it can be called from different places
      */
     func positionObjectsWithinSize (size: CGSize) {
-        let topMargin: CGFloat = 20.0
-        let standardControlHeight: CGFloat = 30.0
         let viewHeight : CGFloat = size.height
         let viewWidth : CGFloat = size.width
         let margin: CGFloat = (viewWidth + viewHeight)/100
@@ -108,6 +106,7 @@ extension ViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let gameVC : GameViewController = GameViewController()
+        gameVC.game = DataHandler.sharedInstance.games[indexPath.row]
         presentViewController(gameVC, animated: true, completion: nil)
     }
 }

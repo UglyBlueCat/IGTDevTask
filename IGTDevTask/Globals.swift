@@ -13,6 +13,9 @@ let jackpotURLString: String = "https://dl.dropboxusercontent.com/u/49130683/nat
 let userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
 let kCurrency: String = "kCurrency"
 let kNewData: String = "kNewData"
+let topMargin: CGFloat = 20.0
+let standardControlHeight: CGFloat = 30.0
+let standardControlWidth: CGFloat = 100.0
 
 /*
  * Colours
@@ -63,23 +66,5 @@ extension UIColor {
             (a, r, g, b) = (1, 1, 1, 0)
         }
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
-    }
-}
-
-/*
- * Create image from colour
- * Taken from http://stackoverflow.com/questions/26542035/create-uiimage-with-solid-color-in-swift
- */
-public extension UIImage {
-    public convenience init?(color: UIColor, size: CGSize = CGSize(width: 1, height: 1)) {
-        let rect = CGRect(origin: .zero, size: size)
-        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
-        color.setFill()
-        UIRectFill(rect)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        guard let cgImage = image.CGImage else { return nil }
-        self.init(CGImage: cgImage)
     }
 }

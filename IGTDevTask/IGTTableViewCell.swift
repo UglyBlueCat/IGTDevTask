@@ -10,8 +10,6 @@ import UIKit
 
 class IGTTableViewCell: UITableViewCell {
     
-    let margin: CGFloat = 1.0
-    
     var detailLabel: UILabel!
     
     required init?(coder aDecoder: NSCoder) {
@@ -48,6 +46,7 @@ class IGTTableViewCell: UITableViewCell {
      * These are in a seperate function so they can be called from layoutSubviews()
      */
     func sizeObjects() {
+        let margin: CGFloat = 1.0
         let cellHeight : CGFloat = bounds.size.height
         let cellWidth : CGFloat = bounds.size.width
         

@@ -10,6 +10,12 @@ import UIKit
 
 class GameViewController: UIViewController {
     
+    var game : JackpotGame!
+    var nameLabel: UILabel!
+    var dateLabel: UILabel!
+    var jackpotLabel: UILabel!
+    var doneButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -36,7 +42,26 @@ class GameViewController: UIViewController {
      * Add objects to the view
      */
     func addObjects () {
+
+        nameLabel = UILabel()
+        nameLabel.text = game.name
+        nameLabel.textAlignment = .Center
+        view.addSubview(nameLabel)
         
+        dateLabel = UILabel()
+        dateLabel.text = game.date
+        dateLabel.textAlignment = .Center
+        view.addSubview(dateLabel)
+        
+        jackpotLabel = UILabel()
+        jackpotLabel.text = String(game.jackpot)
+        jackpotLabel.textAlignment = .Center
+        view.addSubview(jackpotLabel)
+        
+        doneButton = UIButton()
+        doneButton.setTitle("Done", forState: .Normal)
+        doneButton.addTarget(self, action: #selector(doneButtonTapped), forControlEvents: .TouchUpInside)
+        view.addSubview(doneButton)
     }
     
     /*
@@ -46,5 +71,38 @@ class GameViewController: UIViewController {
      */
     func positionObjectsWithinSize (size: CGSize) {
         
+        let viewHeight : CGFloat = size.height
+        let viewWidth : CGFloat = size.width
+        let margin: CGFloat = (viewWidth + viewHeight)/100
+        
+        nameLabel.frame = CGRect(x: margin, 
+                                  y: topMargin, 
+                                  width: viewWidth - 2*margin, 
+                                  height: standardControlHeight)
+        
+        dateLabel.frame = CGRect(x: margin, 
+                                  y: CGRectGetMaxY(nameLabel.frame) + margin, 
+                                  width: viewWidth - 2*margin, 
+                                  height: standardControlHeight)
+        
+        jackpotLabel.frame = CGRect(x: margin, 
+                                    y: CGRectGetMaxY(dateLabel.frame) + margin, 
+                                  width: viewWidth - 2*margin, 
+                                  height: standardControlHeight)
+        
+        doneButton.frame = CGRect(x: (viewWidth - standardControlWidth)/2, 
+                                  y: viewHeight - standardControlHeight - margin, 
+                                  width: standardControlWidth, 
+                                  height: standardControlHeight)
+    }
+    
+    /*
+     * doneButtonTapped()
+     *
+     * Respond to the tapping of the done button
+     * Checks all settings are saved and removes the view
+     */
+    func doneButtonTapped() {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }

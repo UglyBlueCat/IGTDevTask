@@ -11,9 +11,9 @@ import UIKit
 class GameViewController: UIViewController {
     
     var game : JackpotGame!
-    var nameLabel: UILabel!
-    var dateLabel: UILabel!
-    var jackpotLabel: UILabel!
+    var nameLabel: IGTLabel!
+    var dateLabel: IGTLabel!
+    var jackpotLabel: IGTLabel!
     var doneButton: UIButton!
     
     override func viewDidLoad() {
@@ -32,6 +32,7 @@ class GameViewController: UIViewController {
      * Set up the view
      */
     func setupView () {
+        view.backgroundColor = primaryColor
         addObjects()
         positionObjectsWithinSize(view.bounds.size)
     }
@@ -43,25 +44,33 @@ class GameViewController: UIViewController {
      */
     func addObjects () {
 
-        nameLabel = UILabel()
-        nameLabel.text = game.name
-        nameLabel.textAlignment = .Center
+        nameLabel = IGTLabel(textStr: game.name)
         view.addSubview(nameLabel)
         
-        dateLabel = UILabel()
-        dateLabel.text = game.date
-        dateLabel.textAlignment = .Center
+        dateLabel = IGTLabel(textStr: formatDate(game.date))
         view.addSubview(dateLabel)
         
-        jackpotLabel = UILabel()
-        jackpotLabel.text = String(game.jackpot)
-        jackpotLabel.textAlignment = .Center
+        jackpotLabel = IGTLabel(textStr: formatJackpot(game.jackpot))
         view.addSubview(jackpotLabel)
         
         doneButton = UIButton()
+        configureDoneButton()
+        view.addSubview(doneButton)
+    }
+    
+    /*
+     * configureDoneButton
+     *
+     * Configures the done buton
+     */
+    func configureDoneButton () {
+        
         doneButton.setTitle("Done", forState: .Normal)
         doneButton.addTarget(self, action: #selector(doneButtonTapped), forControlEvents: .TouchUpInside)
-        view.addSubview(doneButton)
+        doneButton.setTitleColor(primaryTextColor, forState: .Normal)
+        doneButton.layer.cornerRadius = 5
+        doneButton.layer.borderWidth = 2
+        doneButton.layer.borderColor = primaryTextColor.CGColor
     }
     
     /*
@@ -104,5 +113,66 @@ class GameViewController: UIViewController {
      */
     func doneButtonTapped() {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    /*
+     * formatDate
+     *
+     * formats a date string
+     *
+     * some help from http://www.codingexplorer.com/swiftly-getting-human-readable-date-nsdateformatter/
+     * and http://nsdateformatter.com/
+     *
+     * @param: dateStr: String - the date string to format
+     * @return: formattedDate : String - the formatted date string
+     */
+    func formatDate (dateStr: String) -> String {
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale.currentLocale()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        if let intermediateDate : NSDate = dateFormatter.dateFromString(dateStr) {
+            dateFormatter.dateStyle = .MediumStyle
+            dateFormatter.timeStyle = .ShortStyle
+            return dateFormatter.stringFromDate(intermediateDate)
+        } else {
+            DLog("Couldn't format date: \(dateStr)")
+        }
+        return dateStr
+    }
+    
+    /*
+     * formatJackpot
+     *
+     * formats a jackpot integer as a currency
+     *
+     * some ideas taken from:
+     * http://supereasyapps.com/blog/2016/2/8/how-to-use-nsnumberformatter-in-swift-to-make-currency-numbers-easy-to-read
+     * and http://stackoverflow.com/questions/31999748/get-currency-symbols-from-currency-code-with-swift
+     *
+     * @param: rawJackpot: Int - the jackpot integer to format
+     * @return: jackpot : String - the formatted jackpot string
+     */
+    func formatJackpot (rawJackpot: Int) -> String {
+        
+        guard let currencyCode = userDefaults.stringForKey(kCurrency) else {
+            DLog("Unable to fetch currency code from user defaults")
+            return String(rawJackpot)
+        }
+        
+        let localeComponents = [NSLocaleCurrencyCode: currencyCode]
+        let localeIdentifier = NSLocale.localeIdentifierFromComponents(localeComponents)
+        
+        let currencyFormatter = NSNumberFormatter()
+        currencyFormatter.locale = NSLocale(localeIdentifier: localeIdentifier)
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .CurrencyStyle
+        
+        if let jackpotStr = currencyFormatter.stringFromNumber(NSNumber(integer: rawJackpot)) {
+            return jackpotStr
+        } else {
+            DLog("Unable to convert jackpot \\(\(rawJackpot)\\) to currency string")
+            return String(rawJackpot)
+        }
     }
 }

@@ -13,6 +13,7 @@ let jackpotURLString: String = "https://dl.dropboxusercontent.com/u/49130683/nat
 let userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
 let kCurrency: String = "kCurrency"
 let kNewData: String = "kNewData"
+let kFileSaved: String = "kFileSaved"
 let topMargin: CGFloat = 20.0
 let standardControlHeight: CGFloat = 30.0
 let standardControlWidth: CGFloat = 100.0
@@ -20,11 +21,12 @@ let standardControlWidth: CGFloat = 100.0
 /*
  * Colours
  */
-let primaryColor = UIColor(hexString: "#515151")
+let primaryColor = UIColor(hexString: "#A600A6")
+let secondaryColor = UIColor(hexString: "#530FAD")
 let primaryTextColor = UIColor(hexString: "#FFFFFF")
-let accentColor = UIColor(hexString: "#40371A")
-let primaryAttentionColor = UIColor(hexString: "#8CF205")
-let secondaryAttentionColor = UIColor(hexString: "#96BF3C")
+let secondaryTextColor = UIColor(hexString: "#000000")
+let primaryAttentionColor = UIColor(hexString: "#E40045")
+let secondaryAttentionColor = UIColor(hexString: "#EB5BA7")
 let pinkColor = UIColor(hexString: "#FF00FF")
 
 /*

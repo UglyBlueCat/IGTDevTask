@@ -17,6 +17,7 @@ class FileHandler {
     static let sharedInstance = FileHandler()
     
     private init() {
+        
         let paths : [String] = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let documentsDirectory : NSURL = NSURL(fileURLWithPath: paths[0])
         if let filePath = documentsDirectory.URLByAppendingPathComponent(gamesFile).relativePath {
@@ -51,6 +52,7 @@ class FileHandler {
      * some ideas for date comparison taken from http://stackoverflow.com/questions/26198526/nsdate-comparison-using-swift
      */
     func fileValid () -> Bool {
+        
         guard fileManager.fileExistsAtPath(gamesFilePath) else {
             return false
         }

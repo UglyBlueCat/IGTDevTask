@@ -80,6 +80,7 @@ class DataHandler {
      * @param: dataPoints: NSArray - the array of game data
      */
     func extractDataPoints (dataPoints: NSArray) {
+        
         for point: AnyObject in dataPoints {
             if let name = point["name"] as? String,
                let jackpot = point["jackpot"] as? Int,

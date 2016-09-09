@@ -10,7 +10,7 @@ import UIKit
 
 class IGTTableViewCell: UITableViewCell {
     
-    var detailLabel: UILabel!
+    var detailLabel: IGTLabel!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -34,8 +34,7 @@ class IGTTableViewCell: UITableViewCell {
      * Seperate from sizeObjects() so it can be called from initialisers
      */
     func setupView() {
-        detailLabel = UILabel()
-        detailLabel.textAlignment = .Center
+        detailLabel = IGTLabel()
         self.addSubview(detailLabel!)
     }
     

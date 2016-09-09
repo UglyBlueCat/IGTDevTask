@@ -10,8 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var titleLabel: UILabel!
+    var titleLabel: IGTLabel!
     var resultsTable: UITableView!
+    var activityIndicator: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,7 @@ class ViewController: UIViewController {
     }
 
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         positionObjectsWithinSize(size)
         resultsTable.reloadData()
@@ -35,6 +37,8 @@ class ViewController: UIViewController {
      * Set up the view
      */
     func setupView () {
+        
+        view.backgroundColor = primaryColor
         addObjects()
         positionObjectsWithinSize(view.bounds.size)
     }
@@ -45,16 +49,36 @@ class ViewController: UIViewController {
      * Add objects to the view
      */
     func addObjects () {
-        titleLabel = UILabel()
-        titleLabel.text = "IGT Games"
-        titleLabel.textAlignment = .Center
+        
+        titleLabel = IGTLabel(textStr: "IGT Games")
         view.addSubview(titleLabel)
         
         resultsTable = UITableView()
+        configureTable()
+        view.addSubview(resultsTable)
+        
+        activityIndicator = UIActivityIndicatorView()
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            activityIndicator.activityIndicatorViewStyle = .WhiteLarge
+        }
+        view.addSubview(activityIndicator)
+        if DataHandler.sharedInstance.games.count <= 0 {
+            activityIndicator.startAnimating()
+        }
+    }
+    
+    /*
+     * configureTable
+     *
+     * Configures the table
+     */
+    func configureTable () {
+        
         resultsTable.delegate = self
         resultsTable.dataSource = self
+        resultsTable.separatorStyle = .None
+        resultsTable.backgroundColor = UIColor.clearColor()
         resultsTable.registerClass(IGTTableViewCell.self, forCellReuseIdentifier: "IGTTableViewCell")
-        view.addSubview(resultsTable)
     }
     
     /*
@@ -64,6 +88,7 @@ class ViewController: UIViewController {
      * Done in a seperate method so it can be called from different places
      */
     func positionObjectsWithinSize (size: CGSize) {
+        
         let viewHeight : CGFloat = size.height
         let viewWidth : CGFloat = size.width
         let margin: CGFloat = (viewWidth + viewHeight)/100
@@ -76,7 +101,12 @@ class ViewController: UIViewController {
         resultsTable.frame = CGRect(x: margin, 
                                   y: CGRectGetMaxY(titleLabel.frame) + margin, 
                                   width: viewWidth - 2*margin, 
-                                  height: viewHeight - CGRectGetHeight(titleLabel.frame) - 3*margin)
+                                  height: viewHeight - CGRectGetMaxY(titleLabel.frame) - 2*margin)
+        
+        activityIndicator.frame = CGRect(x: (viewWidth - standardControlHeight)/2,
+                                         y: (viewHeight - standardControlHeight)/2,
+                                         width: standardControlHeight,
+                                         height: standardControlHeight)
     }
     
     /*
@@ -86,18 +116,30 @@ class ViewController: UIViewController {
      * Reloads the table
      */
     func newDataRecieved () {
-        resultsTable.reloadData()
+        
+        // Make sure UI changes happen on the main thread
+        dispatch_async(dispatch_get_main_queue(), {
+            self.resultsTable.reloadData()
+            self.activityIndicator.stopAnimating()
+        })
     }
 }
 
 extension ViewController: UITableViewDataSource {
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return DataHandler.sharedInstance.games.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell : IGTTableViewCell = tableView.dequeueReusableCellWithIdentifier("IGTTableViewCell", forIndexPath: indexPath) as! IGTTableViewCell
-        cell.detailLabel!.text = DataHandler.sharedInstance.games[indexPath.row].name
+        guard let cell : IGTTableViewCell = tableView.dequeueReusableCellWithIdentifier("IGTTableViewCell") as? IGTTableViewCell else {
+            DLog("Could not dequeue cell")
+            return UITableViewCell()
+        }
+        if DataHandler.sharedInstance.games.count > 0 {
+            cell.detailLabel!.text = DataHandler.sharedInstance.games[indexPath.row].name
+        }
         return cell
     }
 }
@@ -105,8 +147,11 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         let gameVC : GameViewController = GameViewController()
-        gameVC.game = DataHandler.sharedInstance.games[indexPath.row]
+        if DataHandler.sharedInstance.games.count > 0 {
+            gameVC.game = DataHandler.sharedInstance.games[indexPath.row]
+        }
         presentViewController(gameVC, animated: true, completion: nil)
     }
 }

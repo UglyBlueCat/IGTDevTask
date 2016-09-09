@@ -10,6 +10,7 @@
 		00362F2E1D816515000C080D /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00362F2D1D816515000C080D /* Globals.swift */; };
 		00362F301D818CCA000C080D /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00362F2F1D818CCA000C080D /* DataHandler.swift */; };
 		00362F361D81A339000C080D /* JackpotGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00362F351D81A339000C080D /* JackpotGame.swift */; };
+		00741C621D82E65700A0B508 /* IGTLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00741C611D82E65700A0B508 /* IGTLabel.swift */; };
 		007456C71D81B9F90028CF59 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007456C61D81B9F90028CF59 /* FileHandler.swift */; };
 		0082E5001D82D4430050F25F /* IGTTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082E4FF1D82D4430050F25F /* IGTTableViewCell.swift */; };
 		00AF1B111D802C1E00ACB2C2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AF1B101D802C1E00ACB2C2 /* NetworkManager.swift */; };
@@ -25,6 +26,7 @@
 		00362F2D1D816515000C080D /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		00362F2F1D818CCA000C080D /* DataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
 		00362F351D81A339000C080D /* JackpotGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JackpotGame.swift; sourceTree = "<group>"; };
+		00741C611D82E65700A0B508 /* IGTLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGTLabel.swift; sourceTree = "<group>"; };
 		007456C61D81B9F90028CF59 /* FileHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
 		0082E4FF1D82D4430050F25F /* IGTTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGTTableViewCell.swift; sourceTree = "<group>"; };
 		00AF1B101D802C1E00ACB2C2 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 				00D184041D7EE0E800B46C1F /* ViewController.swift */,
 				00F238211D81E88E00D17AB5 /* GameViewController.swift */,
 				0082E4FF1D82D4430050F25F /* IGTTableViewCell.swift */,
+				00741C611D82E65700A0B508 /* IGTLabel.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00362F2E1D816515000C080D /* Globals.swift in Sources */,
+				00741C621D82E65700A0B508 /* IGTLabel.swift in Sources */,
 				007456C71D81B9F90028CF59 /* FileHandler.swift in Sources */,
 				00AF1B111D802C1E00ACB2C2 /* NetworkManager.swift in Sources */,
 				00362F361D81A339000C080D /* JackpotGame.swift in Sources */,

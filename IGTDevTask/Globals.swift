@@ -14,19 +14,19 @@ let userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
 let kCurrency: String = "kCurrency"
 let kNewData: String = "kNewData"
 let kFileSaved: String = "kFileSaved"
-let topMargin: CGFloat = 20.0
+let topMargin: CGFloat = 40.0
 let standardControlHeight: CGFloat = 30.0
 let standardControlWidth: CGFloat = 100.0
 
 /*
- * Colours
+ * Colours (taken from IGT website)
  */
-let primaryColor = UIColor(hexString: "#A600A6")
-let secondaryColor = UIColor(hexString: "#530FAD")
+let primaryColor = UIColor(hexString: "#1B9AD9")
+let secondaryColor = UIColor(hexString: "#7BCFF3")
 let primaryTextColor = UIColor(hexString: "#FFFFFF")
 let secondaryTextColor = UIColor(hexString: "#000000")
-let primaryAttentionColor = UIColor(hexString: "#E40045")
-let secondaryAttentionColor = UIColor(hexString: "#EB5BA7")
+let primaryAttentionColor = UIColor(hexString: "#FF671F")
+let secondaryAttentionColor = UIColor(hexString: "#FBA42F")
 let pinkColor = UIColor(hexString: "#FF00FF")
 
 /*

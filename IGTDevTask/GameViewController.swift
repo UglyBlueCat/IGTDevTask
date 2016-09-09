@@ -70,7 +70,7 @@ class GameViewController: UIViewController {
         doneButton.setTitleColor(primaryTextColor, forState: .Normal)
         doneButton.layer.cornerRadius = 5
         doneButton.layer.borderWidth = 2
-        doneButton.layer.borderColor = primaryTextColor.CGColor
+        doneButton.layer.borderColor = primaryAttentionColor.CGColor
     }
     
     /*

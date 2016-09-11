@@ -82,7 +82,7 @@ class GameViewController: UIViewController {
         
         let viewHeight : CGFloat = size.height
         let viewWidth : CGFloat = size.width
-        let margin: CGFloat = (viewWidth + viewHeight)/100
+        let margin: CGFloat = (viewWidth + viewHeight)/50
         
         nameLabel.frame = CGRect(x: margin, 
                                   y: topMargin, 
@@ -165,6 +165,12 @@ class GameViewController: UIViewController {
         
         let currencyFormatter = NSNumberFormatter()
         currencyFormatter.locale = NSLocale(localeIdentifier: localeIdentifier)
+        
+        if let currSymbol = currencyFormatter.currencySymbol {
+            currencyFormatter.locale = NSLocale.currentLocale()
+            currencyFormatter.currencySymbol = currSymbol
+        }
+        
         currencyFormatter.usesGroupingSeparator = true
         currencyFormatter.numberStyle = .CurrencyStyle
         

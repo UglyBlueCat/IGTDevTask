@@ -76,7 +76,7 @@ class GameViewController: UIViewController {
     /*
      * positionObjectsWithinSize
      *
-     * Sets the size of objects separately so this function can be called from different places
+     * Sets the size and position of objects separately so this function can be called from different places
      */
     func positionObjectsWithinSize (size: CGSize) {
         
@@ -109,7 +109,7 @@ class GameViewController: UIViewController {
      * doneButtonTapped()
      *
      * Respond to the tapping of the done button
-     * Checks all settings are saved and removes the view
+     * Removes the view
      */
     func doneButtonTapped() {
         dismissViewControllerAnimated(true, completion: nil)
@@ -145,6 +145,20 @@ class GameViewController: UIViewController {
      * formatJackpot
      *
      * formats a jackpot integer as a currency
+     *
+     * I considered the formatting of the jackpot for a long time.
+     *
+     * There are three sentences in the requirements that concern the formatting of the jackpot:
+     * - "Display the ... jackpot ... using best practices for locale formatting"
+     * - "Use currency provided in JSON to format jackpot"
+     * - "All ... numbers must have correct localisation support and should be displayed using the device's locale"
+     *
+     * The word 'format' in the second sentence causes it to appear to contradict the first and third sentence, but I 
+     * considered that this may have been done to avoid directly stating that the currency symbol should be determined
+     * from the currency code given in the JSON
+     *
+     * I ultimately considered that the best way to format currency is with the correct currency symbol, but formatted
+     * according to the users locale, thus making the figure both accurate and easily readable by the user
      *
      * some ideas taken from:
      * http://supereasyapps.com/blog/2016/2/8/how-to-use-nsnumberformatter-in-swift-to-make-currency-numbers-easy-to-read
